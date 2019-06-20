@@ -35,7 +35,6 @@ namespace KMeansIris
             KMeansWithDistanceFunc(irisData, DistanceFunctions.EuclideanDistance);
             KMeansWithDistanceFunc(irisData, DistanceFunctions.ManhattanDistance);
             KMeansWithDistanceFunc(irisData, DistanceFunctions.CosineDistance);
-            KMeansWithDistanceFunc(irisData, DistanceFunctions.SquareEuclideanDistance);
             KMeansWithDistanceFunc(irisData, DistanceFunctions.ChebyshevDistance);
             Console.ReadLine();
         }

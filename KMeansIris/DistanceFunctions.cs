@@ -38,19 +38,6 @@ namespace KMeansIris
             return sum == 0 ? 1.0 : 1.0 - (sum / den);
         }
 
-        public static double SquareEuclideanDistance(double[] x, double[] y)
-        {
-            double sum = 0.0;
-
-            for (int i = 0; i < x.Length; i++)
-            {
-                double u = x[i] - y[i];
-                sum += u * u;
-            }
-
-            return sum;
-        }
-
         public static double ChebyshevDistance(double[] x, double[] y)
         {
             double max = Math.Abs(x[0] - y[0]);

@@ -70,6 +70,7 @@ namespace KMeansIris
                 Console.Write($"Cluster {i}. "); 
                 Console.WriteLine(string.Join(", ", groups.Select(s => $"{s.Key} [{s.Count}]").ToArray()));
             }
+            Console.WriteLine($"Iteration: {result.Iteration}");
 
             var errorPercent = (1 - correctCount / (double)setLength) * 100;
             Console.ForegroundColor = ConsoleColor.DarkRed;

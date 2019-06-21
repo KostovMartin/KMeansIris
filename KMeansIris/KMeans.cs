@@ -14,7 +14,7 @@ namespace KMeansIris
 
     public static class KMeans
     {
-        public static Result<T> Cluster<T>(KMeansCalculateDistanceDelegate calculateDistanceFunction, T[] items, int clusterCount, int maxIterations = 100)
+        public static Result<T> Cluster<T>(KMeansCalculateDistanceDelegate calculateDistanceFunction, T[] items, int clusterCount, int maxIterations = 10)
         {
             var data = ConvertToVectors(items);
 
@@ -52,7 +52,7 @@ namespace KMeansIris
                 ++clustersCurIdx[c];
             }
 
-            return new Result<T>(clusters, totalDistance);
+            return new Result<T>(clusters, totalDistance, iteration);
         }
 
         private static double[][] ConvertToVectors<T>(T[] items)
@@ -217,10 +217,13 @@ namespace KMeansIris
 
             public double TotalDistance { get; }
 
-            public Result(T[][] clusters, double totalDistance)
+            public int Iteration { get; }
+
+            public Result(T[][] clusters, double totalDistance, int iteration)
             {
                 Clusters = clusters;
                 TotalDistance = totalDistance;
+                Iteration = iteration;
             }
         }
     }

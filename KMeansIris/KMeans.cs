@@ -10,11 +10,9 @@ namespace KMeansIris
     { 
     }
 
-    public delegate double KMeansCalculateDistanceDelegate(double[] point, double[] centroid);
-
     public static class KMeans
     {
-        public static Result<T> Cluster<T>(KMeansCalculateDistanceDelegate calculateDistanceFunction, T[] items, int clusterCount, int maxIterations = 10)
+        public static Result<T> Cluster<T>(DistanceDelegate calculateDistanceFunction, T[] items, int clusterCount, int maxIterations = 10)
         {
             var data = ConvertToVectors(items);
 
@@ -136,7 +134,7 @@ namespace KMeansIris
             ref int[] centroidIdx,
             int clusterCount, 
             ref int[] clusterItemCount, 
-            KMeansCalculateDistanceDelegate calculateDistanceFunction)
+            DistanceDelegate calculateDistanceFunction)
         {
             var means = CreateMatrix(clusterCount, data[0].Length);
 
@@ -181,7 +179,7 @@ namespace KMeansIris
             return totalDistance;
         }
 
-        private static bool AssignClustering(double[][] data, int[] clustering, int[] centroidIdx, int clusterCount, KMeansCalculateDistanceDelegate calculateDistanceFunction)
+        private static bool AssignClustering(double[][] data, int[] clustering, int[] centroidIdx, int clusterCount, DistanceDelegate calculateDistanceFunction)
         {
             var changed = false;
 

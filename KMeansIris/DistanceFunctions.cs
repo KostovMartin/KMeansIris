@@ -2,6 +2,8 @@
 
 namespace KMeansIris
 {
+    public delegate double DistanceDelegate(double[] point, double[] centroid);
+
     public class DistanceFunctions
     {
         public static double EuclideanDistance(double[] x, double[] y)
